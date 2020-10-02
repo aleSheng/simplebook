@@ -1,7 +1,7 @@
 {
   "NotebookApp": {
     "nbserver_extensions": {
-      "simplest_notebook": true
+      "simplebook": true
     }
   }
 }

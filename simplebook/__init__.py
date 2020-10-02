@@ -74,7 +74,7 @@ class AddSlashHandler(IPythonHandler):
 
 def _jupyter_server_extension_paths():
     return [{
-        'module': 'simplest_notebook',
+        'module': 'simplebook',
     }]
 
 
@@ -100,7 +100,7 @@ class SimplestNotebookApp(NotebookApp):
     )
     def init_server_extensions(self):
         super().init_server_extensions()
-        if not self.nbserver_extensions.get('simplest_notebook', False):
+        if not self.nbserver_extensions.get('simplebook', False):
             load_jupyter_server_extension(self)
 
 main = SimplestNotebookApp.launch_instance
