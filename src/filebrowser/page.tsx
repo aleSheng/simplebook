@@ -1,11 +1,11 @@
 // Copyright (c) Jupyter Development Team.
 // Distributed under the terms of the Modified BSD License.
 
-import { CommandRegistry } from '@phosphor/commands';
+import { CommandRegistry } from '@lumino/commands';
 
 import { Header } from '../components/header';
 
-import { DockPanel, Widget } from '@phosphor/widgets';
+import { DockPanel, Widget } from '@lumino/widgets';
 
 import { ServiceManager, Contents } from '@jupyterlab/services';
 import { PageConfig } from '@jupyterlab/coreutils';

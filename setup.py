@@ -26,11 +26,11 @@ def build_static_first(cls):
 
 
 setuptools.setup(
-    name="simplest-notebook",
+    name="simplebook",
     version='0.0.9',
-    url="https://github.com/yuvipanda/simplest-notebook",
-    author="Yuvi Panda",
-    author_email="yuvipanda@gmail.com",
+    url="https://github.com/alesheng/simplebook",
+    author="Yuvi Panda, ale",
+    author_email="ale@anlint.com",
     license="BSD 3-Clause",
     packages=setuptools.find_packages(),
     install_requires=['notebook'],
@@ -39,7 +39,7 @@ setuptools.setup(
         'Framework :: Jupyter',
     ],
     data_files=[
-        ('etc/jupyter/jupyter_notebook_config.d', ['simplest_notebook/etc/jupyter_notebook_config.d/simplest-notebook-serverextension.json']),
+        ('etc/jupyter/jupyter_notebook_config.d', ['simplebook/etc/jupyter_notebook_config.d/simplebook-serverextension.json']),
     ],
     package_data={
         '': ['build/*', 'index.html']
@@ -54,7 +54,7 @@ setuptools.setup(
     },
     entry_points={
         'console_scripts': [
-            'jupyter-simplest-notebook = simplest_notebook:main'
+            'jupyter-simplebook = simplebook:main'
         ]
     }
 )

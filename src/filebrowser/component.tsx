@@ -3,10 +3,10 @@
 
 import * as React from 'react';
 
-import { each } from '@phosphor/algorithm';
-import { CommandRegistry } from '@phosphor/commands';
+import { each } from '@lumino/algorithm';
+import { CommandRegistry } from '@lumino/commands';
 
-import { SplitPanel, Widget, Menu } from '@phosphor/widgets';
+import { SplitPanel, Widget, Menu } from '@lumino/widgets';
 
 import { FileBrowser } from '@jupyterlab/filebrowser';
 

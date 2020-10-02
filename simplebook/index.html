@@ -1,18 +1,13 @@
 <!doctype html>
 <html lang="en">
   <head>
-    <title>Simplest Notebook - {{config_data.path}}</title>
+    <title>Notebook - {{config_data.path}}</title>
   </head>
   <body>
     <script id='jupyter-config-data' type="application/json">
       {{ config_data|tojson }}
     </script>
     <script src="{{base_url}}simplest/build/bundle.js"></script>
-
-    <!-- FIXME: Load this locally -->
-    <link href="https://fonts.googleapis.com/css?family=Roboto|Roboto+Mono|Roboto+Slab" rel="stylesheet">
-
-
     <script type="text/javascript">
       /* Remove token from URL. */
       (function () {

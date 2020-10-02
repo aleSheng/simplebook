@@ -1,7 +1,7 @@
 // Copyright (c) Jupyter Development Team.
 // Distributed under the terms of the Modified BSD License.
-import { CommandRegistry } from '@phosphor/commands';
-import { Widget } from '@phosphor/widgets';
+import { CommandRegistry } from '@lumino/commands';
+import { Widget } from '@lumino/widgets';
 import { NotebookPanel } from '@jupyterlab/notebook';
 import {
   CompleterModel,
@@ -30,7 +30,7 @@ export class CompleterComponent extends React.Component<CompleterProps> {
     const model = new CompleterModel();
     this.completer = new Completer({ editor, model });
     const connector = new KernelConnector({
-      session: this.props.notebookPanel.session
+      session: this.props.notebookPanel.sessionContext.session
     });
     this.handler = new CompletionHandler({
       completer: this.completer,

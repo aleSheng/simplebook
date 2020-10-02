@@ -3,7 +3,7 @@ The Simplest Notebook
 =====================
 
 .. image:: https://mybinder.org/badge_logo.svg
-   :target: https://mybinder.org/v2/gh/yuvipanda/simplest-notebook/master?urlpath=%2Fsimplest
+   :target: https://mybinder.org/v2/gh/yuvipanda/simplebook/master?urlpath=%2Fsimplest
 
 The simplest possible Jupyter Notebook interface.
 
@@ -26,10 +26,10 @@ The Simplest Notebook can be installed with ``pip``.
 
 .. code::
 
-    pip install simplest-notebook
+    pip install simplebook
 
 Once installed, you can open simplest notebook with
 
 .. code::
 
-    jupyter simplest-notebook
+    jupyter simplebook

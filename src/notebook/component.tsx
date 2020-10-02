@@ -1,12 +1,12 @@
 import * as React from 'react';
-import { Widget, } from '@phosphor/widgets';
+import { Widget, } from '@lumino/widgets';
 import { NotebookPanel, NotebookActions } from '@jupyterlab/notebook';
 import { CmdIds } from '../commands';
 
 import '../../../styles/notebook.css';
-import { CommandRegistry } from '@phosphor/commands';
+import { CommandRegistry } from '@lumino/commands';
 import { Contents } from '@jupyterlab/services';
-import { ReactWidget, ToolbarButton } from '@jupyterlab/apputils';
+import { ReactWidget, ToolbarButton, sessionContextDialogs } from '@jupyterlab/apputils';
 
 import { HTMLSelect } from '@jupyterlab/ui-components';
 
@@ -26,7 +26,7 @@ class InterfaceSwitcher extends ReactWidget {
   render = () => {
     return (
       <HTMLSelect
-        minimal
+        // minimal
         onChange={this.onChange}
         className="jp-Notebook-toolbarCellTypeDropdown"
       >
@@ -80,11 +80,11 @@ export class NotebookComponent extends React.Component<INotebookProps, INotebook
     const downloadToolBarButton = new ToolbarButton({
       onClick: () => this.props.commands.execute(CmdIds.download),
       tooltip: 'Download notebook to your computer',
-      iconClassName: 'jp-MaterialIcon jp-DownloadIcon',
+      iconClass: 'jp-MaterialIcon jp-DownloadIcon',
       iconLabel: 'Download notebook'
     });
     const restartAndRunAll = new ToolbarButton({
-      iconClassName: 'jp-MaterialIcon sn-RestartAndRunAllIcon',
+      iconClass: 'jp-MaterialIcon sn-RestartAndRunAllIcon',
       iconLabel: 'Restart Kernel & Run All Cells',
       tooltip: 'Restart Kernel & Run All Cells',
       onClick: () => this.props.commands.execute(CmdIds.restartAndRunAll)
@@ -151,35 +151,29 @@ export class NotebookComponent extends React.Component<INotebookProps, INotebook
     });
     commands.addCommand(CmdIds.interrupt, {
       label: 'Interrupt',
-      execute: () => {
-        if (nbWidget.context.session.kernel) {
-          nbWidget.context.session.kernel.interrupt();
-        }
-      }
+      execute: async () => nbWidget.context.sessionContext.session?.kernel?.interrupt()
     });
     commands.addCommand(CmdIds.restart, {
       label: 'Restart Kernel',
-      execute: () => nbWidget.context.session.restart()
+      execute: () => sessionContextDialogs.restart(nbWidget.context.sessionContext)
     });
     commands.addCommand(CmdIds.switchKernel, {
       label: 'Switch Kernel',
-      execute: () => nbWidget.context.session.selectKernel()
+      execute: () => sessionContextDialogs.selectKernel(nbWidget.context.sessionContext)
     });
     commands.addCommand(CmdIds.runAndAdvance, {
       label: 'Run and Advance',
       execute: () => {
         NotebookActions.runAndAdvance(
           nbWidget.content,
-          nbWidget.context.session
+          nbWidget.context.sessionContext
         );
       }
     });
     commands.addCommand(CmdIds.restartAndRunAll, {
       label: 'Restart Kernel & Run All Cells',
       execute: () => {
-        nbWidget.context.session.restart().then(() => {
-          NotebookActions.runAll(nbWidget.content, nbWidget.context.session);
-        });
+        NotebookActions.runAll(nbWidget.content, nbWidget.context.sessionContext);
       }
     });
     commands.addCommand(CmdIds.editMode, {
