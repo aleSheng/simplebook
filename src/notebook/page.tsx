@@ -23,7 +23,6 @@ import { DocumentManager } from '@jupyterlab/docmanager';
 import { DocumentRegistry } from '@jupyterlab/docregistry';
 
 import { RenderMimeRegistry } from '@jupyterlab/rendermime';
-import { Header } from '../components/header';
 import { NotebookComponent } from './component';
 import { CompleterComponent } from '../components/completer';
 
@@ -125,21 +124,16 @@ export class NotebookPage extends React.Component<NotebookPageProps> {
       '.ipynb',
       ''
     );
+    console.log('notebook name:', notebookName);
 
     return [
-      <Header
-        title={notebookName}
-        key="page-header"
-      />,
-      <main key="main">
         <NotebookComponent
           id="main-container"
           commands={this.commands}
           notebookWidget={this.nbWidget}
           notebookPath={this.props.notebookPath}
           contentsManager={this.props.serviceManager.contents}
-        />
-      </main>,
+        />,
       <CompleterComponent
         key="completer"
         commands={this.commands}

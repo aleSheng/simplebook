@@ -1,7 +1,7 @@
 module.exports = {
-  entry: ['whatwg-fetch', './simplebook/build/index.js'],
+  entry: ['whatwg-fetch', './build/index.js'],
   output: {
-    path: __dirname + '/simplebook/build',
+    path: __dirname + '/build',
     filename: 'bundle.js',
     publicPath: ''
   },

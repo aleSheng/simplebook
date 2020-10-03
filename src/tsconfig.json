@@ -1,6 +1,6 @@
 {
   "compilerOptions": {
-    "outDir": "../simplebook/build",
+    "outDir": "../build",
     "allowSyntheticDefaultImports": true,
     "composite": true,
     "declaration": true,

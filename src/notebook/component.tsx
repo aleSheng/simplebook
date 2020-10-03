@@ -3,7 +3,7 @@ import { Widget, } from '@lumino/widgets';
 import { NotebookPanel, NotebookActions } from '@jupyterlab/notebook';
 import { CmdIds } from '../commands';
 
-import '../../../styles/notebook.css';
+import '../../styles/notebook.css';
 import { CommandRegistry } from '@lumino/commands';
 import { Contents } from '@jupyterlab/services';
 import { ReactWidget, ToolbarButton, sessionContextDialogs } from '@jupyterlab/apputils';

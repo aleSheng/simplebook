@@ -85,7 +85,7 @@ def load_jupyter_server_extension(nbapp):
         (ujoin(base_url, r'tree'), AddSlashHandler),
         (ujoin(base_url, r'(notebooks|tree)(.*)?'), PageHandler),
         (ujoin(base_url, r"build/(.*)"), FileFindHandler,
-            {'path': os.path.join(HERE, '../build')})
+            {'path': os.path.join(HERE, 'build')})
     ]
     nbapp.web_app.add_handlers('.*$', handlers)
 

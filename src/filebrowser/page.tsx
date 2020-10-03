@@ -3,8 +3,6 @@
 
 import { CommandRegistry } from '@lumino/commands';
 
-import { Header } from '../components/header';
-
 import { DockPanel, Widget } from '@lumino/widgets';
 
 import { ServiceManager, Contents } from '@jupyterlab/services';
@@ -20,7 +18,7 @@ import { DocumentRegistry } from '@jupyterlab/docregistry';
 import * as React from 'react';
 import { FileBrowserComponent } from './component';
 
-import '../../../styles/filebrowser.css';
+import '../../styles/filebrowser.css';
 import { IChangedArgs } from '@jupyterlab/coreutils';
 
 export interface FileBrowserPageProps {
@@ -50,22 +48,22 @@ export class FileBrowserPage extends React.Component<FileBrowserPageProps, FileB
       currentPath: this.props.startingPath
     };
 
-    let opener = {
+    const opener = {
       open: (widget: Widget) => {
         console.log(widget);
       }
     }
-    let docRegistry = new DocumentRegistry();
+    const docRegistry = new DocumentRegistry();
     this.docManager = new DocumentManager({
       registry: docRegistry,
       manager: this.props.serviceManager,
       opener
     });
 
-    let fbModel = new FileBrowserModel({
+    const fbModel = new FileBrowserModel({
       manager: this.docManager,
     });
-    fbModel.cd(this.state.currentPath);
+    fbModel.cd(this.state.currentPath).then(r => console.log('fbModel.cd:',r));
     this.fileBrowser = new FileBrowser({
       id: 'filebrowser',
       model: fbModel
@@ -97,7 +95,7 @@ export class FileBrowserPage extends React.Component<FileBrowserPageProps, FileB
       target_url = base_url + 'view/' + item.path;
       window.open(target_url, '_blank');
     } else if (item.type == 'directory') {
-      this.fileBrowser.model.cd(item.path);
+      this.fileBrowser.model.cd(item.path).then(r => console.log(r));
     }
   }
 
@@ -110,19 +108,13 @@ export class FileBrowserPage extends React.Component<FileBrowserPageProps, FileB
     if (!displayPath.endsWith('/')) {
       displayPath = displayPath + '/';
     }
-    return [
-      <Header
-        title={displayPath}
-        key="page-header"
-      />,
-      <main key="main">
+    return (
         <FileBrowserComponent
           id="main-container"
           fileBrowser={this.fileBrowser}
           serviceManager={this.props.serviceManager}
           openItem={this.openItem}
         />
-      </main>
-    ];
+      )
   }
 }

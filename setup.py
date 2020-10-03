@@ -27,7 +27,7 @@ def build_static_first(cls):
 
 setuptools.setup(
     name="simplebook",
-    version='0.0.9',
+    version='0.1.0',
     url="https://github.com/alesheng/simplebook",
     author="Yuvi Panda, ale",
     author_email="ale@anlint.com",
@@ -39,7 +39,7 @@ setuptools.setup(
         'Framework :: Jupyter',
     ],
     data_files=[
-        ('etc/jupyter/jupyter_notebook_config.d', ['simplebook/etc/jupyter_notebook_config.d/simplebook-serverextension.json']),
+        ('etc/jupyter/jupyter_notebook_config.d', ['etc/jupyter_notebook_config.d/simplebook-serverextension.json']),
     ],
     package_data={
         '': ['build/*', 'index.html']

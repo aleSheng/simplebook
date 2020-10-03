@@ -1,4 +1,4 @@
-import '../../../styles/header.css';
+import '../../styles/header.css';
 import * as React from 'react';
 
 interface HeaderProps {

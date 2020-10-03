@@ -35,14 +35,13 @@ export class FileBrowserComponent extends React.Component<IFileBrowserProps> {
   }
 
   render() {
-    return ([
-      <p><strong>Note:</strong> For now, right click and select Open to open notebooks and files</p>,
-      <div className="filebrowser-super-container" id={this.props.id} />,
-    ]);
+    return (
+      <div className="filebrowser-super-container" id={this.props.id} />
+    );
   }
 
   componentDidMount() {
-    let panel = new SplitPanel();
+    const panel = new SplitPanel();
     panel.addClass('filebrowser-container');
     panel.addWidget(this.props.fileBrowser);
     SplitPanel.setStretch(this.props.fileBrowser, 0);
